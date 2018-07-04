@@ -1,0 +1,75 @@
+.flex_container{
+	display: flex;
+}
+
+#chat_log_div{
+	margin: 0 auto;
+	margin-top: 100px;
+}
+
+.flex_container .room {
+    background: lightgoldenrodyellow;
+    width: 50%;
+    border: 4px solid black;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.flex_container .room h1 {
+    margin: 0 auto;
+    background: #0ea20e;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    font-size: 40px;
+    color: white;
+    height: 5%;
+    border-bottom: 1px solid black;
+}
+
+#chat-log {
+    width: 100%;
+    height: 70%;
+    background: transparent;
+    font-size: 40px;
+    font-family: cursive;
+    padding: 20px;
+    border-bottom: none;
+    overflow-y: scroll;
+}
+
+input#chat-message-input {
+    width: 80%;
+    border-radius: 30px;
+    font-size: 30px;
+    padding: 25px;
+    font-family: -webkit-pictograph;
+    border: 1.5px solid black;
+    outline: none;
+}
+
+input#chat-message-submit {
+    background: #10a10f;
+    width: 20%;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    font-family: fantasy;
+    font-weight: bolder;
+    border: 1.5px solid black;
+}
+
+.make_flux{
+    display: flex;
+    height: 6%;
+}
+
+@media only screen and (max-device-width : 640px) {
+
+    .flex_container .room {
+        width: 100%;
+    }
+
+}

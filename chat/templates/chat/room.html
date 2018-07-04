@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<body>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'  %}">
+        <script type="text/javascript">
+            var js_tag = {{room_name_json}};
+        </script>
+        <script type="text/javascript" src="{% static 'js/chat.js'%}"></script>
+        <h1>MY WHATSUP</h1>
+    <div class="flex_container">
+        <div class="room">   
+            <h1>{{room_name_json}}</h1>
+            <textarea id="chat-log" cols="100" rows="20"></textarea>
+            <div class="make_flux">
+                <input id="chat-message-input" type="text" size="100" placeholder="type here..." />
+                <input id="chat-message-submit" type="button" value="SEND"/>
+            </div>
+            
+        </div>   
+    </div>
+     <div id="chat_log_div" ></div>
+</body>
