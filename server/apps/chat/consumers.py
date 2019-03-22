@@ -2,22 +2,18 @@ from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 import json
 import logging
-from channels.db import database_sync_to_async
 from .models import ChatModel
-from rest_framework.response import Response
 from .serializers import ChatModelSerializer
 
 logger = logging.getLogger()
 
+
 class ChatConsumer(WebsocketConsumer):
 
     def connect(self):
-
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
-
         # Join room group
-
         async_to_sync(self.channel_layer.group_add)(
             self.room_group_name,
             self.channel_name
@@ -27,7 +23,6 @@ class ChatConsumer(WebsocketConsumer):
 
     def disconnect(self, close_code):
         # Leave room group
-
         async_to_sync(self.channel_layer.group_discard)(
             self.room_group_name,
             self.channel_name
@@ -35,7 +30,6 @@ class ChatConsumer(WebsocketConsumer):
 
     # Receive message from WebSocket
     def receive(self, text_data):
-        
         text_data_json = json.loads(text_data)
         message = text_data_json['message']
 
@@ -45,7 +39,7 @@ class ChatConsumer(WebsocketConsumer):
             {
                 'type': 'chat_message',
                 'message': message,
-                'group_name':self.room_group_name,
+                'group_name': self.room_group_name,
             }
         )
 
@@ -61,7 +55,7 @@ class ChatConsumer(WebsocketConsumer):
 
         for chat in chat_model_obj:
             if chat.chat_group_name == group_name:
-                chat.chat_log += str(message+'\n')
+                chat.chat_log += str(message + '\n')
                 chat.save()
                 flag = True
 
@@ -76,10 +70,3 @@ class ChatConsumer(WebsocketConsumer):
             'message': message,
             'chat_models': ChatModelSerializer(chat_model_obj, many=True).data,
         }))
-
-
-
-
-
-
-
