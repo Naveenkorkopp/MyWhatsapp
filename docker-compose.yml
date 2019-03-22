@@ -1,0 +1,41 @@
+version: '2'
+
+volumes:
+  postgres_data: {}
+  postgres_backup: {}
+  django-logs:
+    driver: local
+  static-assets:
+    driver: local
+  static-media-assets:
+    driver: local
+
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: chat_box
+      POSTGRES_USER: chat_box
+      POSTGRES_PASSWORD: chat_box
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - postgres_backup:/backups
+      - ./server/db_dump:/shared
+
+  redis:
+    image: redis:latest
+
+  webserver:
+    build: ./server
+    volumes:
+      - ./server:/app
+      - django-logs:/logs
+      - static-assets:/app/static_root
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
