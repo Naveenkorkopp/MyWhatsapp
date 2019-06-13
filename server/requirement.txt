@@ -12,7 +12,7 @@ constantly==15.1.0
 daphne==2.2.0
 decorator==4.3.0
 django>=2.0.8
-djangorestframework==3.8.2
+djangorestframework==3.9.1
 hiredis==0.2.0
 hyperlink==18.0.0
 idna==2.7
@@ -22,7 +22,7 @@ ipython==6.4.0
 ipython-genutils==0.2.0
 jedi==0.12.1
 msgpack==0.5.6
-parso==0.3.0
+parso==0.4.0
 pexpect==4.6.0
 pickleshare==0.7.4
 prompt-toolkit==1.0.15
@@ -32,7 +32,7 @@ pytz==2018.5
 simplegeneric==0.8.1
 six==1.11.0
 traitlets==4.3.2
-Twisted==18.4.0
+Twisted==19.2.1
 txaio==2.10.0
 wcwidth==0.1.7
 zope.interface==4.5.0
